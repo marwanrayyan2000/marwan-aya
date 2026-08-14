@@ -85,6 +85,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "مروان & آية | ٤ سبتمبر ٢٠٢٦" },
+      { name: "twitter:title", content: "مروان & آية | ٤ سبتمبر ٢٠٢٦" },
+      { property: "og:description", content: "دعوتنا لمشاركتنا أجمل ليلة في العمر — مروان & آية | ٤ سبتمبر ٢٠٢٦" },
+      { name: "twitter:description", content: "دعوتنا لمشاركتنا أجمل ليلة في العمر — مروان & آية | ٤ سبتمبر ٢٠٢٦" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0595b5cc098334726172aaa5436738e8/id-preview-65dc7e92--dbacc20f-8478-4769-b0f7-fadcdc14acd5.lovable.app-1786715386658.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0595b5cc098334726172aaa5436738e8/id-preview-65dc7e92--dbacc20f-8478-4769-b0f7-fadcdc14acd5.lovable.app-1786715386658.png" },
     ],
     links: [
       {
