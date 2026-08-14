@@ -45,7 +45,7 @@ export function Monogram({ className, seal = true, title = "M & A" }: Props) {
 
       {/* M */}
       <path
-        d="M33 88 V52 L47 74 L61 52 V88"
+        d="M28 88 V52 L40 72 L52 52 V88"
         stroke="url(#mg-foil)"
         strokeWidth="1.7"
         strokeLinecap="round"
@@ -53,7 +53,7 @@ export function Monogram({ className, seal = true, title = "M & A" }: Props) {
       />
       {/* ampersand rendered as a fine gold stem */}
       <path
-        d="M67 88 C67 78 78 76 78 68 C78 62 73 60 70 63 C66 67 72 76 80 83 C84 87 88 88 90 85"
+        d="M57 87 C57 80 64 78 64 72 C64 68.4 60.6 66.6 58.6 69 C55.8 72.4 60 78 65.6 83.4"
         stroke="url(#mg-foil)"
         strokeWidth="0.9"
         strokeLinecap="round"
@@ -61,13 +61,13 @@ export function Monogram({ className, seal = true, title = "M & A" }: Props) {
       />
       {/* A */}
       <path
-        d="M84 88 L95 52 L106 88 M88 78 H102"
+        d="M68 88 L79 52 L90 88 M72 78 H86"
         stroke="url(#mg-foil)"
         strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
-        transform="translate(-11 0)"
       />
+
       <circle cx="60" cy="102" r="1.6" fill="url(#mg-foil)" />
     </svg>
   );
