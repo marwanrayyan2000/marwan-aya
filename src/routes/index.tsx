@@ -1,24 +1,88 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { primeAudio, sfx } from "@/lib/audio";
+import { Opening } from "@/components/wedding/Opening";
+import { Hero } from "@/components/wedding/Hero";
+import { Message } from "@/components/wedding/Message";
+import { Timeline } from "@/components/wedding/Timeline";
+import { Countdown } from "@/components/wedding/Countdown";
+import { Details } from "@/components/wedding/Details";
+import { Location } from "@/components/wedding/Location";
+import { DressCode } from "@/components/wedding/DressCode";
+import { Surprise } from "@/components/wedding/Surprise";
+import { Memories } from "@/components/wedding/Memories";
+import { GuestBook } from "@/components/wedding/GuestBook";
+import { CalendarSection } from "@/components/wedding/CalendarSection";
+import { Finale } from "@/components/wedding/Finale";
+import { FloatingActions } from "@/components/wedding/FloatingActions";
+import { cn } from "@/lib/utils";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "مروان & آية | ٤ سبتمبر ٢٠٢٦";
+const DESCRIPTION = "دعوتنا لمشاركتنا أجمل ليلة في العمر — مروان & آية | ٤ سبتمبر ٢٠٢٦";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "ar_PS" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#FFFFFF" },
+    ],
+  }),
+  component: Invitation,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Invitation() {
+  const [opened, setOpened] = useState(false);
+
+  useEffect(() => {
+    primeAudio();
+    document.documentElement.lang = "ar";
+    document.documentElement.dir = "rtl";
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = opened ? "" : "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [opened]);
+
+  const enter = () => {
+    setOpened(true);
+    sfx.whoosh();
+    window.scrollTo({ top: 0 });
+  };
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main dir="rtl" lang="ar" className="relative min-h-screen bg-background">
+      {!opened && <Opening onDone={enter} />}
+
+      <div
+        className={cn(
+          "transition-all duration-[1400ms]",
+          opened ? "opacity-100 blur-0" : "opacity-0 blur-md",
+        )}
+      >
+        <Hero />
+        <Message />
+        <Timeline />
+        <Countdown />
+        <Details />
+        <Location />
+        <DressCode />
+        <Surprise />
+        <Memories />
+        <GuestBook />
+        <CalendarSection />
+        <Finale />
+      </div>
+
+      {opened && <FloatingActions />}
+    </main>
   );
 }
