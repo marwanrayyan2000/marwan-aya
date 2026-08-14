@@ -21,12 +21,16 @@ const LABELS = [
 ] as const;
 
 export function Countdown() {
-  const [time, setTime] = useState(() => remaining());
+  // Start from a static value so SSR markup and the first client render match,
+  // then switch to live values right after hydration.
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
+    setTime(remaining());
     const id = window.setInterval(() => setTime(remaining()), 1000);
     return () => window.clearInterval(id);
   }, []);
+
 
   return (
     <section aria-labelledby="countdown-title" className="relative px-6 py-24 sm:py-32">
