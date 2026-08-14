@@ -12,7 +12,10 @@ export function FloatingActions() {
 
   useEffect(() => {
     setPlaying(isPlaying());
-    return onAudioChange(setPlaying);
+    const unsubscribe = onAudioChange(setPlaying);
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const share = async () => {
