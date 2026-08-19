@@ -52,9 +52,6 @@ export function Finale() {
 
         <Monogram className="mt-10 h-24 w-20" />
 
-        <p className="mt-10 font-naskh text-[0.95rem] leading-[2] text-muted-foreground">
-          إلى اللقاء في ليلة لا تُنسى.
-        </p>
 
         <p
           className="mt-8 font-sans text-[0.58rem] tracking-luxe text-gold-deep/70 uppercase"
