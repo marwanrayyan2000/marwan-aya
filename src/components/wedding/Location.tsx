@@ -30,14 +30,10 @@ export function Location() {
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold relative mt-10 inline-flex items-center justify-center rounded-sm px-10 py-4 font-sans text-[0.65rem] uppercase"
-              dir="ltr"
+              className="btn-luxe relative mt-10 inline-flex items-center justify-center px-10 py-4 font-kufi text-[0.78rem]"
             >
-              Open Map
+              الوصول إلى الصالة
             </a>
-            <p className="relative mt-5 font-kufi text-[0.7rem] text-muted-foreground">
-              يفتح خرائط جوجل للوصول إلى الصالة
-            </p>
           </div>
         </Reveal>
       </div>
