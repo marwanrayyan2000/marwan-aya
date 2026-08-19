@@ -1,10 +1,10 @@
 import { Reveal, SectionLabel } from "./atoms";
 
 const PALETTE = [
-  { ar: "بورجندي", style: "background: var(--burgundy)" },
-  { ar: "فحمي", style: "background: var(--charcoal)" },
-  { ar: "عاجي", style: "background: var(--ivory)" },
-  { ar: "شامبين", style: "background: var(--gold)" },
+  { ar: "بورجندي", color: "var(--burgundy)" },
+  { ar: "فحمي", color: "var(--charcoal)" },
+  { ar: "عاجي", color: "var(--ivory)" },
+  { ar: "شامبين", color: "var(--gold)" },
 ] as const;
 
 export function DressCode() {
@@ -29,11 +29,11 @@ export function DressCode() {
         </Reveal>
         <Reveal delay={220}>
           <ul className="mt-9 flex items-center justify-center gap-5">
-            {PALETTE.map(({ ar, style }) => (
+            {PALETTE.map(({ ar, color }) => (
               <li key={ar} className="flex flex-col items-center gap-3">
                 <span
                   className="size-8 rounded-full border border-gold/40 shadow-[0_10px_24px_-16px_oklch(0_0_0/0.5)] sm:size-9"
-                  style={Object.fromEntries([style.split(": ")]) as React.CSSProperties}
+                  style={{ backgroundColor: color }}
                   aria-hidden="true"
                 />
                 <span className="font-kufi text-[0.62rem] text-muted-foreground">{ar}</span>
