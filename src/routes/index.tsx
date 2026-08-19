@@ -1,18 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { primeAudio, sfx } from "@/lib/audio";
-import { Opening } from "@/components/wedding/Opening";
+import { Overture } from "@/components/wedding/Overture";
 import { Hero } from "@/components/wedding/Hero";
 import { Message } from "@/components/wedding/Message";
 import { Timeline } from "@/components/wedding/Timeline";
 import { Countdown } from "@/components/wedding/Countdown";
-import { Details } from "@/components/wedding/Details";
 import { Location } from "@/components/wedding/Location";
 import { DressCode } from "@/components/wedding/DressCode";
 import { Surprise } from "@/components/wedding/Surprise";
-import { Memories } from "@/components/wedding/Memories";
 import { GuestBook } from "@/components/wedding/GuestBook";
-import { CalendarSection } from "@/components/wedding/CalendarSection";
 import { Finale } from "@/components/wedding/Finale";
 import { FloatingActions } from "@/components/wedding/FloatingActions";
 import { cn } from "@/lib/utils";
@@ -60,25 +57,22 @@ function Invitation() {
 
   return (
     <main dir="rtl" lang="ar" className="relative min-h-screen bg-background">
-      {!opened && <Opening onDone={enter} />}
+      {!opened && <Overture onDone={enter} />}
 
       <div
         className={cn(
-          "transition-all duration-[1400ms]",
-          opened ? "opacity-100 blur-0" : "opacity-0 blur-md",
+          "transition-all duration-[1600ms]",
+          opened ? "scale-100 opacity-100 blur-0" : "scale-[1.02] opacity-0 blur-md",
         )}
       >
         <Hero />
         <Message />
         <Timeline />
         <Countdown />
-        <Details />
         <Location />
         <DressCode />
         <Surprise />
-        <Memories />
         <GuestBook />
-        <CalendarSection />
         <Finale />
       </div>
 

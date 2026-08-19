@@ -31,10 +31,14 @@ export function Countdown() {
     return () => window.clearInterval(id);
   }, []);
 
-
   return (
-    <section aria-labelledby="countdown-title" className="relative px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-2xl text-center">
+    <section aria-labelledby="countdown-title" className="relative overflow-hidden px-6 py-28 sm:py-36">
+      <div
+        className="light-bloom animate-breathe pointer-events-none absolute top-1/2 left-1/2 h-[42vh] w-[42vh] -translate-x-1/2 -translate-y-1/2 opacity-[0.35]"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-3xl text-center">
         <Reveal>
           <SectionLabel>Countdown</SectionLabel>
         </Reveal>
@@ -43,31 +47,34 @@ export function Countdown() {
             <span id="countdown-title">اقترب الموعد</span>
           </SectionTitle>
         </Reveal>
-        <Reveal delay={180}>
-          <p className="mt-4 font-kufi text-[0.85rem] leading-[2] text-muted-foreground">
-            باقي القليل لنلتقي ونحتفل معًا
-          </p>
-        </Reveal>
 
         <GoldRule className="mt-10" />
 
-        <Reveal delay={240}>
-          <ul className="mt-12 grid grid-cols-4 gap-2 sm:gap-4">
-            {LABELS.map(({ key, ar }) => (
-              <li key={key} className="card-luxe rounded-sm px-1 py-6 sm:py-8">
+        <Reveal delay={200}>
+          <ul className="mt-14 flex items-start justify-center gap-4 sm:gap-10" dir="ltr">
+            {LABELS.map(({ key, ar }, index) => (
+              <li key={key} className="flex flex-1 flex-col items-center">
+                {index > 0 && null}
                 <p
-                  className="font-display text-2xl text-gold-deep tabular-nums sm:text-4xl"
+                  className="font-display text-[2.6rem] leading-none text-ink tabular-nums sm:text-[4.5rem]"
                   aria-hidden="true"
                 >
                   {toArabicDigits(key === "days" ? time.days : pad2(time[key]))}
                 </p>
-                <p className="mt-3 font-kufi text-[0.65rem] text-muted-foreground sm:text-xs">
+                <span className="hairline-gold mt-5 block w-8 sm:w-12" aria-hidden="true" />
+                <p className="mt-4 font-kufi text-[0.62rem] tracking-widest text-muted-foreground sm:text-[0.75rem]">
                   {ar}
                 </p>
                 <span className="sr-only">{`${time[key]} ${ar}`}</span>
               </li>
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal delay={320}>
+          <p className="mt-16 font-naskh text-[0.95rem] leading-[2.1] text-muted-foreground">
+            باقي القليل لنلتقي ونحتفل معًا
+          </p>
         </Reveal>
       </div>
     </section>
